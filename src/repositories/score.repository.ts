@@ -2,7 +2,7 @@ import ScoreModel, { IScore } from '../models/score.models'; // Import the corre
 
 class ScoreRepository {
   // Create a new score
-  async createScore(scoreData: Partial<IScore>): Promise<IScore> {
+  async new(scoreData: Partial<IScore>): Promise<IScore> {
     const score = new ScoreModel(scoreData); // Properly instantiate using the model
     return await score.save(); // Save the document and return the result
   }

@@ -7,7 +7,8 @@ import { config } from 'dotenv';
 config();
 
 // routes
-import scoreRoutes from './routes/score.router';
+import scoreRoutes from '@/routes/score.router';
+import matcheRoute from './routes/match.router';
 
 // websockets
 import scoreWebSocket from './websockets/score.websocket';
@@ -30,6 +31,7 @@ app.use(cors({ origin: ORIGIN }));
 
 // Routes
 app.use(`${BASE_URL}/scores`, scoreRoutes);
+app.use(`${BASE_URL}/matches`, matcheRoute);
 
 // WebSocket integration
 scoreWebSocket(wss);

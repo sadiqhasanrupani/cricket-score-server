@@ -4,7 +4,7 @@ import { IScore } from '../models/score.models';
 class ScoreService {
   async createScore(scoreData: Partial<IScore>): Promise<IScore> {
     // Perform any additional logic (e.g., validation) before saving to the DB
-    return ScoreRepository.createScore(scoreData);
+    return ScoreRepository.new(scoreData);
   }
 
   async getAllScores(): Promise<IScore[]> {

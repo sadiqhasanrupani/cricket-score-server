@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema, InferSchemaType } from 'mongoose';
 
 const matchSchema = new Schema({
   teamA: {
@@ -43,10 +43,19 @@ const matchSchema = new Schema({
       runs: { type: Number, default: 0 },
       wickets: { type: Number, default: 0 },
       overs: { type: Number, default: 0 },
+      extras: {
+        total: { type: Number, default: 0 },
+        noballs: { type: Number, default: 0 },
+        wides: { type: Number, default: 0 },
+        byes: { type: Number, default: 0 },
+        legbyes: { type: Number, default: 0 },
+      },
       scoringEvents: [{ type: Schema.Types.ObjectId, ref: 'ScoringEvent' }],
     },
   ],
 });
 
-const Match = mongoose.model('Match', matchSchema);
+export type MatchSchema = InferSchemaType<typeof matchSchema>;
+
+const Match = mongoose.model<MatchSchema>('Match', matchSchema);
 export default Match;
